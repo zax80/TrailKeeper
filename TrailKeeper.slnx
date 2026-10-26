@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="TrailKeeper.Data.Models/TrailKeeper.Data.Models.csproj" />
+  <Project Path="TrailKeeper.Data/TrailKeeper.Data.csproj" />
+  <Project Path="TrailKeeper.GCommon/TrailKeeper.GCommon.csproj" />
+  <Project Path="TrailKeeper.Services.Core/TrailKeeper.Services.Core.csproj" />
+  <Project Path="TrailKeeper.Web.ViewModels/TrailKeeper.Web.ViewModels.csproj" />
+  <Project Path="TrailKeeper.Web/TrailKeeper.Web.csproj" />
+</Solution>

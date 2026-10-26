@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\TrailKeeper.Services.Core\TrailKeeper.Services.Core.csproj" />
+    <ProjectReference Include="..\TrailKeeper.Web.ViewModels\TrailKeeper.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\TrailKeeper.Data\TrailKeeper.Data.csproj" />
+    <ProjectReference Include="..\TrailKeeper.GCommon\TrailKeeper.GCommon.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>
