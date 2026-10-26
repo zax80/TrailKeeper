@@ -1,0 +1,40 @@
+﻿@model TrailDetailsViewModel
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="h3 card-title">@Model.Name</h1>
+        <p class="text-muted">
+            @Model.RegionName
+            <span class="badge bg-secondary ms-2">@Model.DifficultyName</span>
+        </p>
+        <p>@Model.Description</p>
+
+        <dl class="row mb-0">
+            <dt class="col-sm-4">Start point</dt>
+            <dd class="col-sm-8">@Model.StartPoint</dd>
+
+            <dt class="col-sm-4">Length</dt>
+            <dd class="col-sm-8">@Model.LengthKm.ToString("0.0") km</dd>
+
+            <dt class="col-sm-4">Elevation gain</dt>
+            <dd class="col-sm-8">@Model.ElevationGainM m</dd>
+
+            <dt class="col-sm-4">Duration</dt>
+            <dd class="col-sm-8">@Model.DurationHours.ToString("0.0") h</dd>
+
+            <dt class="col-sm-4">Route type</dt>
+            <dd class="col-sm-8">@(Model.IsLoop ? "Loop" : "One way")</dd>
+
+            <dt class="col-sm-4">Added on</dt>
+            <dd class="col-sm-8">@Model.CreatedOn.ToString("dd.MM.yyyy")</dd>
+        </dl>
+    </div>
+    <div class="card-footer bg-transparent d-flex gap-2">
+        <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        <a class="btn btn-link ms-auto" asp-action="Index">Back to list</a>
+    </div>
+</div>

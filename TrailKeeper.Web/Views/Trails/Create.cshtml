@@ -1,0 +1,20 @@
+﻿@model TrailFormViewModel
+@{
+    ViewData["Title"] = "Add trail";
+}
+
+<h1 class="h3 mb-4">Add trail</h1>
+
+<div class="row">
+    <div class="col-lg-8">
+        <form asp-action="Create" method="post">
+            <partial name="_TrailForm" model="Model" />
+            <button type="submit" class="btn btn-success">Save</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

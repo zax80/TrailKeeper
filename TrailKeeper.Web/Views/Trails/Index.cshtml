@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TrailListItemViewModel>
+@{
+    ViewData["Title"] = "Trails";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Trails</h1>
+    <a class="btn btn-success" asp-action="Create">+ Add trail</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No trails yet. <a asp-action="Create">Add the first one.</a>
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var trail in Model)
+        {
+            <div class="col">
+                <partial name="_TrailCard" model="trail" />
+            </div>
+        }
+    </div>
+}

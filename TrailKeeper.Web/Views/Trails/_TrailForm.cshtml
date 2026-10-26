@@ -1,0 +1,63 @@
+﻿@model TrailFormViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+<div class="mb-3">
+    <label asp-for="Name" class="form-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="StartPoint" class="form-label"></label>
+    <input asp-for="StartPoint" class="form-control" />
+    <span asp-validation-for="StartPoint" class="text-danger"></span>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <label asp-for="LengthKm" class="form-label"></label>
+        <input asp-for="LengthKm" class="form-control" />
+        <span asp-validation-for="LengthKm" class="text-danger"></span>
+    </div>
+    <div class="col-md-4 mb-3">
+        <label asp-for="ElevationGainM" class="form-label"></label>
+        <input asp-for="ElevationGainM" class="form-control" />
+        <span asp-validation-for="ElevationGainM" class="text-danger"></span>
+    </div>
+    <div class="col-md-4 mb-3">
+        <label asp-for="DurationHours" class="form-label"></label>
+        <input asp-for="DurationHours" class="form-control" />
+        <span asp-validation-for="DurationHours" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label asp-for="RegionId" class="form-label"></label>
+        <select asp-for="RegionId" class="form-select"
+                asp-items="@(new SelectList(Model.Regions, "Id", "Name"))">
+            <option value="0">-- Select region --</option>
+        </select>
+        <span asp-validation-for="RegionId" class="text-danger"></span>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="DifficultyId" class="form-label"></label>
+        <select asp-for="DifficultyId" class="form-select"
+                asp-items="@(new SelectList(Model.Difficulties, "Id", "Name"))">
+            <option value="0">-- Select difficulty --</option>
+        </select>
+        <span asp-validation-for="DifficultyId" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-check mb-4">
+    <input asp-for="IsLoop" class="form-check-input" />
+    <label asp-for="IsLoop" class="form-check-label"></label>
+</div>
