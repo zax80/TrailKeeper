@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using TrailKeeper.Services.Core;
+using TrailKeeper.Services.Core.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<TrailKeeperDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ITrailService, TrailService>();
+builder.Services.AddScoped<ILookupService, LookupService>();
 
 var app = builder.Build();
 
