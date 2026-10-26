@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using static TrailKeeper.GCommon.ValidationConstants;
 
+namespace TrailKeeper.Data.Models;
 public class Region
 {
     public int Id { get; set; }
