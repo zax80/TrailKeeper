@@ -404,6 +404,76 @@ namespace TrailKeeper.Data.Migrations
                             Name = "Seven Rila Lakes",
                             RegionId = 1,
                             StartPoint = "Rilski Ezera Hut"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2026, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Steep marked route from Vihren Hut to the highest peak of Pirin, with a rocky final section.",
+                            DifficultyId = 3,
+                            DurationHours = 6.0m,
+                            ElevationGainM = 950,
+                            IsLoop = false,
+                            LengthKm = 9.0m,
+                            Name = "Vihren from Vihren Hut",
+                            RegionId = 2,
+                            StartPoint = "Vihren Hut"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2026, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Short and popular walk from Aleko hut to the highest point of Vitosha above Sofia.",
+                            DifficultyId = 1,
+                            DurationHours = 3.0m,
+                            ElevationGainM = 400,
+                            IsLoop = false,
+                            LengthKm = 6.0m,
+                            Name = "Cherni Vrah from Aleko",
+                            RegionId = 5,
+                            StartPoint = "Aleko Hut"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedOn = new DateTime(2026, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Long forest and ridge route to the highest waterfall in the Balkans, passing Pleven Hut on the way.",
+                            DifficultyId = 3,
+                            DurationHours = 7.0m,
+                            ElevationGainM = 1100,
+                            IsLoop = false,
+                            LengthKm = 16.0m,
+                            Name = "Raiskoto Praskalo from Apriltsi",
+                            RegionId = 3,
+                            StartPoint = "Apriltsi"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedOn = new DateTime(2026, 10, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Easy family loop around the natural rock arches above the Erkyupryia gorge in the Rhodopes.",
+                            DifficultyId = 1,
+                            DurationHours = 2.5m,
+                            ElevationGainM = 200,
+                            IsLoop = true,
+                            LengthKm = 5.0m,
+                            Name = "Wonderful Bridges Loop",
+                            RegionId = 4,
+                            StartPoint = "Wonderful Bridges Hut"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedOn = new DateTime(2026, 10, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Exposed knife-edge ridge between Vihren and Kutelo with fixed cables; for experienced hikers only.",
+                            DifficultyId = 4,
+                            DurationHours = 8.0m,
+                            ElevationGainM = 1100,
+                            IsLoop = false,
+                            LengthKm = 14.0m,
+                            Name = "Koncheto Ridge",
+                            RegionId = 2,
+                            StartPoint = "Banderitsa Hut"
                         });
                 });
 
