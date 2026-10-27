@@ -1,8 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<TrailListItemViewModel>
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="p-5 mb-5 bg-light rounded-3">
+    <h1 class="display-5 fw-bold">TrailKeeper</h1>
+    <p class="lead col-lg-8">
+        A catalog of hiking trails across Bulgaria's mountains. Browse routes by region and difficulty,
+        check length, elevation gain and duration, and share the trails you know.
+    </p>
+    <a class="btn btn-success btn-lg" asp-controller="Trails" asp-action="Index">Browse trails</a>
+    @if (User.Identity?.IsAuthenticated != true)
+    {
+        <a class="btn btn-outline-success btn-lg ms-2" asp-area="Identity" asp-page="/Account/Register">Join to add trails</a>
+    }
+</section>
+
+<h2 class="h4 mb-3">Latest trails</h2>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">No trails yet.</p>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var trail in Model)
+        {
+            <div class="col">
+                <partial name="_TrailCard" model="trail" />
+            </div>
+        }
+    </div>
+}

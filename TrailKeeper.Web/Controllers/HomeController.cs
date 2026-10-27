@@ -1,24 +1,28 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using TrailKeeper.Services.Core.Contracts;
 using TrailKeeper.Web.Models;
 
 namespace TrailKeeper.Web.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private const int LatestTrailsCount = 3;
 
-    public HomeController(ILogger<HomeController> logger)
+    private readonly ITrailService trailService;
+
+    public HomeController(ITrailService trailService)
     {
-        _logger = logger;
+        this.trailService = trailService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var latestTrails = await trailService.GetLatestAsync(LatestTrailsCount);
+        return View(latestTrails);
     }
 
-    public IActionResult Privacy()
+    public IActionResult About()
     {
         return View();
     }
