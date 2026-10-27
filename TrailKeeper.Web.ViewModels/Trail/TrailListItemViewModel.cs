@@ -13,4 +13,6 @@ public class TrailListItemViewModel
     public decimal LengthKm { get; set; }
 
     public decimal DurationHours { get; set; }
+
+    public string? CreatorId { get; set; }
 }

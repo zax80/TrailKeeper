@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrailKeeper.Services.Core.Contracts;
 using TrailKeeper.Web.ViewModels.Trails;
 
 namespace TrailKeeper.Web.Controllers;
 
+[Authorize]
 public class TrailsController : Controller
 {
     private readonly ITrailService trailService;
@@ -15,12 +18,14 @@ public class TrailsController : Controller
         this.lookupService = lookupService;
     }
 
+    [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
         var trails = await trailService.GetAllAsync();
         return View(trails);
     }
 
+    [AllowAnonymous]
     public async Task<IActionResult> Details(int id)
     {
         var model = await trailService.GetDetailsAsync(id);
@@ -51,7 +56,7 @@ public class TrailsController : Controller
             return View(model);
         }
 
-        await trailService.CreateAsync(model);
+        await trailService.CreateAsync(model, GetUserId());
         TempData["Success"] = "Trail added successfully.";
         return RedirectToAction(nameof(Index));
     }
@@ -64,6 +69,11 @@ public class TrailsController : Controller
             return NotFound();
         }
 
+        if (!await trailService.IsCreatorAsync(id, GetUserId()))
+        {
+            return Forbid();
+        }
+
         await LoadLookupsAsync(model);
         return View(model);
     }
@@ -72,6 +82,11 @@ public class TrailsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, TrailFormViewModel model)
     {
+        if (!await trailService.IsCreatorAsync(id, GetUserId()))
+        {
+            return Forbid();
+        }
+
         await ValidateLookupsAsync(model);
 
         if (!ModelState.IsValid)
@@ -98,6 +113,11 @@ public class TrailsController : Controller
             return NotFound();
         }
 
+        if (!await trailService.IsCreatorAsync(id, GetUserId()))
+        {
+            return Forbid();
+        }
+
         return View(model);
     }
 
@@ -106,6 +126,11 @@ public class TrailsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
+        if (!await trailService.IsCreatorAsync(id, GetUserId()))
+        {
+            return Forbid();
+        }
+
         bool deleted = await trailService.DeleteAsync(id);
         if (!deleted)
         {
@@ -115,6 +140,9 @@ public class TrailsController : Controller
         TempData["Success"] = "Trail deleted successfully.";
         return RedirectToAction(nameof(Index));
     }
+
+    private string GetUserId()
+        => User.FindFirstValue(ClaimTypes.NameIdentifier)!;
 
     private async Task LoadLookupsAsync(TrailFormViewModel model)
     {

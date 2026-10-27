@@ -23,6 +23,12 @@ public class TrailConfiguration : IEntityTypeConfiguration<Trail>
               .HasForeignKey(t => t.DifficultyId)
               .OnDelete(DeleteBehavior.Restrict);
 
+        entity.HasOne(t => t.Creator)
+              .WithMany()
+              .HasForeignKey(t => t.CreatorId)
+              .OnDelete(DeleteBehavior.Restrict);
+
+
         entity.HasData(
             new Trail
             {

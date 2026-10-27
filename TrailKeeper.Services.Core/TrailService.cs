@@ -27,7 +27,8 @@ public class TrailService : ITrailService
                 RegionName = t.Region.Name,
                 DifficultyName = t.Difficulty.Name,
                 LengthKm = t.LengthKm,
-                DurationHours = t.DurationHours
+                DurationHours = t.DurationHours,
+                CreatorId = t.CreatorId
             })
             .ToListAsync();
     }
@@ -45,7 +46,8 @@ public class TrailService : ITrailService
                 RegionName = t.Region.Name,
                 DifficultyName = t.Difficulty.Name,
                 LengthKm = t.LengthKm,
-                DurationHours = t.DurationHours
+                DurationHours = t.DurationHours,
+                CreatorId = t.CreatorId
             })
             .ToListAsync();
     }
@@ -67,7 +69,9 @@ public class TrailService : ITrailService
                 IsLoop = t.IsLoop,
                 RegionName = t.Region.Name,
                 DifficultyName = t.Difficulty.Name,
-                CreatedOn = t.CreatedOn
+                CreatedOn = t.CreatedOn,
+                CreatorId = t.CreatorId,
+                CreatorName = t.Creator != null ? t.Creator.UserName! : "Unknown"
             })
             .FirstOrDefaultAsync();
     }
@@ -106,7 +110,7 @@ public class TrailService : ITrailService
             .FirstOrDefaultAsync();
     }
 
-    public async Task CreateAsync(TrailFormViewModel model)
+    public async Task CreateAsync(TrailFormViewModel model, string userId)
     {
         var trail = new Trail
         {
@@ -119,12 +123,16 @@ public class TrailService : ITrailService
             IsLoop = model.IsLoop,
             RegionId = model.RegionId,
             DifficultyId = model.DifficultyId,
-            CreatedOn = DateTime.UtcNow
+            CreatedOn = DateTime.UtcNow,
+            CreatorId = userId
         };
 
         await dbContext.Trails.AddAsync(trail);
         await dbContext.SaveChangesAsync();
     }
+
+    public Task<bool> IsCreatorAsync(int id, string userId)
+    => dbContext.Trails.AnyAsync(t => t.Id == id && t.CreatorId == userId);
 
     public async Task<bool> UpdateAsync(int id, TrailFormViewModel model)
     {

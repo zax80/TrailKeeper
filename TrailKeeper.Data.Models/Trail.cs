@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using static TrailKeeper.GCommon.ValidationConstants;
+using Microsoft.AspNetCore.Identity;
 
 namespace TrailKeeper.Data.Models;
 public class Trail
@@ -29,4 +30,8 @@ public class Trail
 
     public int DifficultyId { get; set; }
     public Difficulty Difficulty { get; set; } = null!;
+
+    public string? CreatorId { get; set; }
+
+    public IdentityUser? Creator { get; set; }
 }

@@ -23,4 +23,8 @@ public class TrailDetailsViewModel
     public string DifficultyName { get; set; } = null!;
 
     public DateTime CreatedOn { get; set; }
+
+    public string? CreatorId { get; set; }
+
+    public string CreatorName { get; set; } = null!;
 }

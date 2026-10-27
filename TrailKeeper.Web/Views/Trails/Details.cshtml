@@ -30,11 +30,17 @@
 
             <dt class="col-sm-4">Added on</dt>
             <dd class="col-sm-8">@Model.CreatedOn.ToString("dd.MM.yyyy")</dd>
+
+            <dt class="col-sm-4">Added by</dt>
+            <dd class="col-sm-8">@Model.CreatorName</dd>
         </dl>
     </div>
     <div class="card-footer bg-transparent d-flex gap-2">
-        <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        @if (Model.CreatorId != null && Model.CreatorId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+        {
+            <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        }
         <a class="btn btn-link ms-auto" asp-action="Index">Back to list</a>
     </div>
 </div>

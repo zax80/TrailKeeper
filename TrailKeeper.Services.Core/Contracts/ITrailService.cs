@@ -14,7 +14,9 @@ public interface ITrailService
 
     Task<TrailDeleteViewModel?> GetForDeleteAsync(int id);
 
-    Task CreateAsync(TrailFormViewModel model);
+    Task CreateAsync(TrailFormViewModel model, string userId);
+
+    Task<bool> IsCreatorAsync(int id, string userId);
 
     Task<bool> UpdateAsync(int id, TrailFormViewModel model);
 

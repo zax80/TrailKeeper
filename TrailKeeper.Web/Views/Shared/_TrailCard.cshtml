@@ -10,9 +10,16 @@
             <li>Duration: @Model.DurationHours.ToString("0.0") h</li>
         </ul>
     </div>
+    @{
+        bool isCreator = Model.CreatorId != null
+        && Model.CreatorId == User.FindFirstValue(ClaimTypes.NameIdentifier);
+    }
     <div class="card-footer bg-transparent d-flex gap-2">
         <a class="btn btn-sm btn-outline-primary" asp-controller="Trails" asp-action="Details" asp-route-id="@Model.Id">Details</a>
-        <a class="btn btn-sm btn-outline-secondary" asp-controller="Trails" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        <a class="btn btn-sm btn-outline-danger" asp-controller="Trails" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        @if (isCreator)
+        {
+            <a class="btn btn-sm btn-outline-secondary" asp-controller="Trails" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a class="btn btn-sm btn-outline-danger" asp-controller="Trails" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        }
     </div>
 </div>
