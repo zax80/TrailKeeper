@@ -1,4 +1,4 @@
-# TrailKeeper
+﻿# TrailKeeper
 
 Hiking trail catalog for Bulgarian mountains. ASP.NET Core 8 MVC, EF Core, SQL Server, Identity.
 
@@ -11,23 +11,54 @@ Logged-in users can add trails. A trail can be edited or deleted only by the use
 
 ## Running locally
 
-Requirements: .NET 8 SDK, SQL Server LocalDB, `dotnet-ef` 8.x.
+### 1. Prerequisites
+
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) — check with `dotnet --version`
+- SQL Server LocalDB — comes with Visual Studio (*ASP.NET and web development* workload).
+  Check with `sqllocaldb info`; the output should list `MSSQLLocalDB`.
+- EF Core CLI tool:
+  ```bash
+  dotnet tool install --global dotnet-ef --version 8.*
+  ```
+
+### 2. Get the code
 
 ```bash
-dotnet tool install --global dotnet-ef --version 8.*   # if not installed
-
-git clone https://github.com/zax80/TrailKeeper.git
+git clone https://github.com/<your-username>/TrailKeeper.git
 cd TrailKeeper
+```
+
+### 3. Create the database
+
+```bash
 dotnet ef database update --project TrailKeeper.Data --startup-project TrailKeeper.Web
+```
+
+This creates the `TrailKeeper` database on LocalDB and fills it with regions, difficulties,
+six sample trails and the demo user. No connection string changes are needed.
+
+### 4. Run
+
+```bash
 dotnet run --project TrailKeeper.Web
 ```
 
-The connection string in `TrailKeeper.Web/appsettings.json` points to `(localdb)\MSSQLLocalDB` with
-Windows authentication. Nothing else needs to be configured: no secrets, no environment variables.
-For another SQL Server instance, change `Server=` only.
+Open the `https://localhost:...` address printed in the console.
 
-From Visual Studio: set `TrailKeeper.Web` as startup project, run `Update-Database` in Package
-Manager Console with `TrailKeeper.Data` as default project, then F5.
+### Using Visual Studio instead
+
+1. Open `TrailKeeper.slnx`.
+2. Right-click `TrailKeeper.Web` → **Set as Startup Project**.
+3. **Tools → NuGet Package Manager → Package Manager Console**, choose `TrailKeeper.Data`
+   in the *Default project* dropdown and run `Update-Database`.
+4. Press **F5**.
+
+### Using another SQL Server
+
+The connection string is in `TrailKeeper.Web/appsettings.json` and uses Windows authentication,
+so no passwords or environment variables are needed. To use a full SQL Server instead of LocalDB,
+change only `Server=(localdb)\MSSQLLocalDB` (for example to `Server=.` or `Server=.\SQLEXPRESS`)
+and run step 3 again.
 
 ## Demo account
 
