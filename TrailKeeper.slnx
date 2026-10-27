@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="TrailKeeper.Data.Models/TrailKeeper.Data.Models.csproj" />
   <Project Path="TrailKeeper.Data/TrailKeeper.Data.csproj" />
   <Project Path="TrailKeeper.GCommon/TrailKeeper.GCommon.csproj" />
