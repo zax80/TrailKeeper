@@ -24,7 +24,7 @@ Logged-in users can add trails. A trail can be edited or deleted only by the use
 ### 2. Get the code
 
 ```bash
-git clone https://github.com/<your-username>/TrailKeeper.git
+git clone https://github.com/zax80/TrailKeeper.git
 cd TrailKeeper
 ```
 
