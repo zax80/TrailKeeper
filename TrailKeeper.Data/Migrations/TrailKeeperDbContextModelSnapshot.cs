@@ -137,6 +137,24 @@ namespace TrailKeeper.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ef12af2b-c21d-429b-8f25-01cd5d993437",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b344526c-778a-47c8-9a41-646e84ef1e54",
+                            Email = "demo@trailkeeper.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "DEMO@TRAILKEEPER.COM",
+                            NormalizedUserName = "DEMO@TRAILKEEPER.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPjwYPbtsw0v5jjJfhj3e3lP31LZeo8va+zX4uQD4WU/1MnZzjCHuNZcb47ytQM+kw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8063f825-ff20-4aab-8306-d969872cf3fa",
+                            TwoFactorEnabled = false,
+                            UserName = "demo@trailkeeper.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -395,6 +413,7 @@ namespace TrailKeeper.Data.Migrations
                         {
                             Id = 1,
                             CreatedOn = new DateTime(2026, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "ef12af2b-c21d-429b-8f25-01cd5d993437",
                             Description = "Classic route past the seven glacial lakes of Rila with wide views from the ridge.",
                             DifficultyId = 2,
                             DurationHours = 5.0m,
@@ -409,6 +428,7 @@ namespace TrailKeeper.Data.Migrations
                         {
                             Id = 2,
                             CreatedOn = new DateTime(2026, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "ef12af2b-c21d-429b-8f25-01cd5d993437",
                             Description = "Steep marked route from Vihren Hut to the highest peak of Pirin, with a rocky final section.",
                             DifficultyId = 3,
                             DurationHours = 6.0m,
@@ -423,6 +443,7 @@ namespace TrailKeeper.Data.Migrations
                         {
                             Id = 3,
                             CreatedOn = new DateTime(2026, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "ef12af2b-c21d-429b-8f25-01cd5d993437",
                             Description = "Short and popular walk from Aleko hut to the highest point of Vitosha above Sofia.",
                             DifficultyId = 1,
                             DurationHours = 3.0m,
@@ -437,6 +458,7 @@ namespace TrailKeeper.Data.Migrations
                         {
                             Id = 4,
                             CreatedOn = new DateTime(2026, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "ef12af2b-c21d-429b-8f25-01cd5d993437",
                             Description = "Long forest and ridge route to the highest waterfall in the Balkans, passing Pleven Hut on the way.",
                             DifficultyId = 3,
                             DurationHours = 7.0m,
@@ -451,6 +473,7 @@ namespace TrailKeeper.Data.Migrations
                         {
                             Id = 5,
                             CreatedOn = new DateTime(2026, 10, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "ef12af2b-c21d-429b-8f25-01cd5d993437",
                             Description = "Easy family loop around the natural rock arches above the Erkyupryia gorge in the Rhodopes.",
                             DifficultyId = 1,
                             DurationHours = 2.5m,
@@ -465,6 +488,7 @@ namespace TrailKeeper.Data.Migrations
                         {
                             Id = 6,
                             CreatedOn = new DateTime(2026, 10, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "ef12af2b-c21d-429b-8f25-01cd5d993437",
                             Description = "Exposed knife-edge ridge between Vihren and Kutelo with fixed cables; for experienced hikers only.",
                             DifficultyId = 4,
                             DurationHours = 8.0m,

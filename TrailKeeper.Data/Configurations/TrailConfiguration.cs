@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TrailKeeper.Data.Models;
+using static TrailKeeper.GCommon.ApplicationConstants;
 
 namespace TrailKeeper.Data.Configurations;
 
@@ -41,7 +42,8 @@ public class TrailConfiguration : IEntityTypeConfiguration<Trail>
                 IsLoop = true,
                 CreatedOn = new DateTime(2026, 10, 1),
                 RegionId = 1,
-                DifficultyId = 2
+                DifficultyId = 2,
+                CreatorId = DemoUserId
             },
             new Trail
             {
@@ -55,7 +57,8 @@ public class TrailConfiguration : IEntityTypeConfiguration<Trail>
                 IsLoop = false,
                 CreatedOn = new DateTime(2026, 10, 2),
                 RegionId = 2,
-                DifficultyId = 3
+                DifficultyId = 3,
+                CreatorId = DemoUserId
             },
             new Trail
             {
@@ -69,7 +72,8 @@ public class TrailConfiguration : IEntityTypeConfiguration<Trail>
                 IsLoop = false,
                 CreatedOn = new DateTime(2026, 10, 3),
                 RegionId = 5,
-                DifficultyId = 1
+                DifficultyId = 1,
+                CreatorId = DemoUserId
             },
             new Trail
             {
@@ -83,7 +87,8 @@ public class TrailConfiguration : IEntityTypeConfiguration<Trail>
                 IsLoop = false,
                 CreatedOn = new DateTime(2026, 10, 4),
                 RegionId = 3,
-                DifficultyId = 3
+                DifficultyId = 3,
+                CreatorId = DemoUserId
             },
             new Trail
             {
@@ -97,7 +102,8 @@ public class TrailConfiguration : IEntityTypeConfiguration<Trail>
                 IsLoop = true,
                 CreatedOn = new DateTime(2026, 10, 5),
                 RegionId = 4,
-                DifficultyId = 1
+                DifficultyId = 1,
+                CreatorId = DemoUserId
             },
             new Trail
             {
@@ -111,7 +117,8 @@ public class TrailConfiguration : IEntityTypeConfiguration<Trail>
                 IsLoop = false,
                 CreatedOn = new DateTime(2026, 10, 6),
                 RegionId = 2,
-                DifficultyId = 4
+                DifficultyId = 4,
+                CreatorId = DemoUserId
             }
         );
     }
